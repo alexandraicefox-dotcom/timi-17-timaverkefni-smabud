@@ -1,0 +1,206 @@
+:root {
+  color-scheme: dark;
+  --background: #101222;
+  --panel: #191c30;
+  --panel-top: #20243a;
+  --text: #f2f0fa;
+  --muted: #c2c5d9;
+  --border: #393f58;
+  --mint: #83f2df;
+  --violet: #c3a5ff;
+  --gold: #ffd39a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 12% 0%, #623b8244, transparent 55%),
+    radial-gradient(ellipse at 95% 20%, #23716e2b, transparent 45%),
+    var(--background);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.app {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+/* Haus og körfuteljari */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1.25rem;
+  background: linear-gradient(
+    90deg,
+    var(--violet),
+    var(--mint) 65%,
+    transparent
+  ) bottom / 100% 1px no-repeat;
+}
+
+.header h1 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.badge {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #83f2df66;
+  border-radius: 999px;
+  background: #83f2df12;
+  color: var(--mint);
+  font-size: 0.9rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Vörulisti og karfa */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: 0.85rem;
+}
+
+.product,
+.cart {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: linear-gradient(150deg, var(--panel-top), var(--panel));
+  box-shadow: 0 12px 28px #05061033;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product:hover {
+  border-color: #83f2df88;
+}
+
+.product h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.product p {
+  margin: 0.35rem 0 1rem;
+  color: var(--muted);
+}
+
+.product button {
+  margin-top: auto;
+  border-color: #83f2df55;
+  background: #143438;
+  color: var(--mint);
+}
+
+.cart {
+  border-top-color: #c3a5ffaa;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cart h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.cart ul {
+  margin: 0.85rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cart li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart p {
+  color: var(--muted);
+}
+
+.cart .total {
+  color: var(--gold);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Takkar */
+.app button {
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #686d88;
+  border-radius: 0.55rem;
+  background: #252940;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.app .product button {
+  border-color: #83f2df55;
+  background: #143438;
+  color: var(--mint);
+}
+
+.app button:hover:not(:disabled) {
+  border-color: var(--mint);
+  box-shadow: 0 0 12px #83f2df29;
+}
+
+.app button:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+}
+
+.app button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
